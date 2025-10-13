@@ -1,9 +1,8 @@
-import {NextAuthOptions} from "next-auth";
+import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials"
-import {PrismaAdapter} from "@auth/prisma-adapter";
+import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prisma } from './prisma';
 import bcrypt from "bcryptjs"
-
 
 export const authOptions: NextAuthOptions = {
     adapter: PrismaAdapter(prisma),
@@ -25,6 +24,10 @@ export const authOptions: NextAuthOptions = {
 
                 if(!user || !user.password) {
                     throw new Error("Invalid credentials")
+                }
+
+                if(!user.emailVerified) {
+                    throw new Error('Please verify your email')
                 }
 
                 const isPasswordValid = await bcrypt.compare(

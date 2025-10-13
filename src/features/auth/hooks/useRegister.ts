@@ -10,8 +10,8 @@ export const useRegister = () => {
 
     return useMutation({
         mutationFn: (data: RegisterCredentials) => authApi.register(data),
-        onSuccess: () => {
-            router.push('/login')
-        }
+        // onSuccess: () => {
+        //     router.push('/login')
+        // }
     })
 }

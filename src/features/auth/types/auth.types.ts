@@ -16,3 +16,12 @@ export interface AuthResponse {
         name?: string
     }
 }
+
+export interface VerifyEmailResponse {
+    success: boolean
+    message: string
+}
+
+export interface ResendVerificationResponse {
+    message: string
+}
