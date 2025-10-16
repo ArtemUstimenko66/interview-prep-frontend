@@ -1,5 +1,5 @@
 import {
-    AuthResponse,
+    AuthResponse, CheckEmailResponse,
     RegisterCredentials, ResendVerificationResponse,
     VerifyEmailResponse
 } from "@/features/auth/types/auth.types";
@@ -16,6 +16,10 @@ export const authApi = {
     },
     resendVerification: async (email: string): Promise<ResendVerificationResponse> => {
         const response = await apiClient.post<ResendVerificationResponse>('/api/auth/resend-verification', { email })
+        return response.data
+    },
+    checkEmail: async (email: string): Promise<CheckEmailResponse> => {
+        const response = await apiClient.post<CheckEmailResponse>('/api/auth/check-email', { email })
         return response.data
     }
 }

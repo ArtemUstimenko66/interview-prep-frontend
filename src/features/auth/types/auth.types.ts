@@ -25,3 +25,9 @@ export interface VerifyEmailResponse {
 export interface ResendVerificationResponse {
     message: string
 }
+
+export interface CheckEmailResponse {
+    exists: boolean
+    verified?: boolean
+    message?: string
+}
